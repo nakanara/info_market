@@ -45,8 +45,10 @@ function next(req, res){
 }
 
 function web(req, res){
+	console.log("__dirname:" + __dirname);
+	console.log("__filename:" + __filename);
 	console.log("Web ---in page:" + req.param.page);
-	var def_path = 'D:/study/nodejs/test';
+	var def_path = __dirname;
 
 	var pathname = url.parse(req.url).pathname;
 
