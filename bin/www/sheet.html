@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Sheet</title>
+		<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui/jquery-ui.theme.css">
+		<link rel="stylesheet" type="text/css" href="/js/lib/bootstrap/css/bootstrap.css">
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+
+		<div class='container'>
+			<div class='row'>
+				<div class='col-md-12'>
+					<h2>SHEET</h2>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-12'>
+					<h2><span>제목</span><input id='userHP' readonly></h2>					
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-12'>
+					<button class='btn btn-success' id='btnSave'>Save</button>					
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-12'>
+					
+					<div class='row'>
+						<div class='col-md-6'>
+							<span>지역(시)</span>
+							<div id='condCode1'></div>
+						</div>
+						<div class='col-md-6'>
+							<span>구군</span>
+							<select>
+								<option>
+							</select>
+						</div>
+					</div>	
+
+					<div class='row'>
+						<div class='col-md-6'>
+							<span>성별</span>
+							<select>
+								<option>
+							</select>
+						</div>
+						<div class='col-md-6'>
+							<span>나이</span>
+							<select>
+								<option>
+							</select>
+						</div>
+					</div>
+
+					<div class='row'>
+						<div class='col-md-6'>
+							<span>결혼여부</span>
+							<input type="checkbox"><label>미혼</label>
+							<input type="checkbox"><label>기혼</label>
+						</div>
+						<div class='col-md-6'>
+							<span>자녀</span>
+							<select>
+								<option>임신</option>
+								<option>임신</option>
+								<option>영아</option>
+								<option>유아</option>
+								<option>초등학생(1~4)</option>
+								<option>초등학생(5~6)</option>
+								<option>중학생</option>
+								<option>고등학생</option>
+								<option>대학생</option>
+							</select>
+							~ 
+							<select>
+								<option>임신</option>
+								<option>영아</option>
+								<option>유아</option>
+								<option>초등학생(1~4)</option>
+								<option>초등학생(5~6)</option>
+								<option>중학생</option>
+								<option>고등학생</option>
+								<option>대학생</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="/js/lib/jquery-ui/jquery-ui.js"></script>
+		<script type="text/javascript" src="/js/lib/bootstrap/js/bootstrap.js"></script>
+	</body>
+	<script type="text/javascript">
+
+		var code01 = ['서울', '대전', '광주', '경기도', '울산', '부산', '대구'];
+		$(document).ready(function(){
+			
+			generateCode('condCode1', code01);
+		});
+
+		function generateCode(targetId, codes) {
+
+			var html = '';
+			var idx = 0;
+			$.each(codes, function(id, o) {
+				html += '<input type="checkbox" id="'+ targetId + '_' + idx + '">&nbsp;<label for="' + targetId + '_' + idx + '" >' + o + '</label>';
+				idx++;
+			});
+
+
+
+			$('#' + targetId).html( html );
+
+		}
+
+	</script>
+</html>

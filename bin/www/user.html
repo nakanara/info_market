@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>User</title>
+		<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="/js/lib/jquery-ui/jquery-ui.theme.css">
+		<link rel="stylesheet" type="text/css" href="/js/lib/bootstrap/css/bootstrap.css">
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+
+		<div class='container'>
+			<div class='row'>
+				<div class='col-md-12'>
+					<h2>Info</h2>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-12'>
+					<h2><input id='userHP' class='input_label' readonly>HP(원하는 상태의 경우 Call)</h2>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-12'>
+					<button class='btn btn-success' id='btnNext'>Next</button>
+					<button class='btn btn-info' id='btnCall'>Call</button>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-12'>
+					
+					<div class='row'>
+						<div class='col-md-6'>
+							<input type='hidden' id='userId'>
+							<h4><input id='userAddr1' readonly><span>&nbsp;지역(시)</h4>
+						</div>
+						<div class='col-md-6'>
+							<h4><input id='userAddr2' readonly><span>&nbsp;구(군)</span></h4>
+						</div>
+
+					</div>					
+
+					<div class='row'>
+						<div class='col-md-6'>
+							<h4><input id='userSix' readonly><span>&nbsp;성별</span></h4>
+						</div>
+						<div class='col-md-6'>
+							<h4><input id='userAge' readonly><span>&nbsp;나이</span></h4>
+						</div>
+					</div>
+
+					<div class='row'>
+						<div class='col-md-6'>
+							<h4><input id='userMarry' readonly><span>&nbsp;결혼유무</span></h4>
+						</div>
+						<div class='col-md-6'>
+							<h4><input id='userChild' readonly><span>&nbsp;자녀</span></h4>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="/js/lib/jquery-ui/jquery-ui.js"></script>
+		<script type="text/javascript" src="/js/lib/bootstrap/js/bootstrap.js"></script>
+	</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$('#btnNext').click(getNextUserInfo);
+			$('#btnCall').click(getCallUser);
+
+		});
+
+		function getNextUserInfo(){
+			console.log('Button click');
+
+			$.ajax('/next')
+				.done(function(data){
+					console.log('success');
+					console.log(data);
+					if(data) {
+						formSetup(data);
+					}
+				})
+				.fail(function(data){
+					console.log('fail');
+					console.log(data);
+				});
+		}
+
+		function getCallUser(){
+			console.log('getCallUser');
+			var userId = $('#userId').val();
+
+			$.ajax('/user/' + userId )
+				.done(function(data){
+					console.log('success');
+					console.log(data);
+					$('#userHP').val(data);
+				})
+				.fail(function(data){
+					console.log('fail');
+					console.log(data);
+				});
+		}
+
+		function formSetup(data) {
+			$('#userId').val(data.id);
+			$('#userAddr1').val(data.addr1);
+			$('#userAddr2').val(data.addr2);
+			$('#userSix').val(data.six);
+			$('#userAge').val(data.age);
+			$('#userMarry').val(data.marry);
+			$('#userChild').val(data.child);
+			
+		}
+	</script>
+</html>
