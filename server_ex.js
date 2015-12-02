@@ -45,10 +45,7 @@ function next(req, res){
 }
 
 function web(req, res){
-	console.log("__dirname:" + __dirname);
-	console.log("__filename:" + __filename);
-	console.log("Web ---in page:" + req.param.page);
-	var def_path = __dirname;
+	var def_path = __dirname + '/bin/';
 
 	var pathname = url.parse(req.url).pathname;
 
@@ -100,7 +97,7 @@ app.get('/view', view);
 app.get('/create', create);
 app.get('/next', next);
 
-app.get('/bin/www/:page', web);
+app.get('/www/:page', web);
 app.get('/user/:id', getUserHPNumber);
 
 
