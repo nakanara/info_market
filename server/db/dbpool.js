@@ -1,6 +1,7 @@
 
 // DB 
 // db/dbpoo.js
+// https://github.com/felixge/node-mysql
 
 var mariaSql = require('mariasql');
 conn = new mariaSql();
