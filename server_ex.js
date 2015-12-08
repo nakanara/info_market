@@ -49,6 +49,10 @@ function web(req, res){
 
 	var pathname = url.parse(req.url).pathname;
 
+	if(pathname == '/') {
+		pathname = 'www/index';
+	}
+
 	console.log('def_path=' + (def_path + pathname) + ".html");
 	console.log('params:' + req.param.id);
 
@@ -97,6 +101,7 @@ app.get('/view', view);
 app.get('/create', create);
 app.get('/next', next);
 
+app.get('/', web);
 app.get('/www/:page', web);
 app.get('/user/:id', getUserHPNumber);
 
