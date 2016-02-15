@@ -1,0 +1,77 @@
+/**
+ * Bell Pang 
+ **/
+
+html,div,input,textarea {
+  font:doumot 12px;
+  padding: 0;
+  margin:0px auto;
+}
+div.titlebar {
+  height: 40px;
+  width: 100%;
+  background-color: gray;
+  text-align: center;
+  position: relative;
+}
+
+div.titlebar div {
+  text-align: center;
+  vertical-align: middle;
+  display: table;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+div.menu-bar {
+  height: 50px;
+  width: 100%;
+  /*background-color: blue;*/
+  position: absolute;
+  vertical-align: top;
+  bottom:0px;
+  padding: 0 20px 0 20px;
+}
+
+div.menu-bar .menu-item {
+  float: left;
+  padding: 0 30px 0 0px;
+  cursor: pointer;
+}
+
+div.wait-item-label {
+  float: left;
+}
+
+div.wait-item-count {
+  position: relative;
+}
+div.wait-item-count .count {
+  border-radius: 50%;
+  background-color: #fff;
+  height: 20em;
+  padding-bottom: 31%;
+  position: relative;
+  width: 20em;
+}
+
+div.wait-item-count .hours {
+  background: #000;
+  height: 20%;
+  left: 48.75%;
+  position: absolute;
+  top:30%;
+  transform-origin: 50% 100%;
+  width: 2.5%;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.hours-container {
+  animation: rotate 60s infinite linear;
+}

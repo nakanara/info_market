@@ -103,6 +103,7 @@ app.get('/next', next);
 
 app.get('/', web);
 app.get('/www/:page', web);
+app.get('/www/bellpang/:page', web);
 app.get('/user/:id', getUserHPNumber);
 
 
